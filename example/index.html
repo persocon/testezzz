@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Mango Facebook Live Reactions Example</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<ul>
+    <li>
+        <p><img src="img/php.svg"></p>
+        <img src="img/like.gif"><br>
+        <div class="reactions" data-reaction="like">0</div>
+    </li>
+    <li>
+        <p><img src="img/python.svg"></p>
+        <img src="img/love.gif"><br>
+        <div class="reactions" data-reaction="love">0</div>
+    </li>
+    <li>
+        <p><img src="img/javascript.svg"></p>
+        <img src="img/wow.gif"><br>
+        <div class="reactions" data-reaction="wow">0</div>
+    </li>
+    <li>
+        <p><img src="img/ruby.svg"></p>
+        <img src="img/haha.gif"><br>
+        <div class="reactions" data-reaction="haha">0</div>
+    </li>
+    <li>
+        <p><img src="img/java.svg"></p>
+        <img src="img/sad.gif"><br>
+        <div class="reactions" data-reaction="sad">0</div>
+    </li>
+    <li>
+        <p><img src="img/dotnet.svg"></p>
+        <img src="img/angry.gif"><br>
+        <div class="reactions" data-reaction="angry">0</div>
+    </li>
+</ul>
+
+<script src="../node_modules/mango-reactions/dist/reactions.js"></script>
+<script>
+    const options = {
+        postID: 1875882335977618, //The live straming post ID (see README.md)
+        access_token: 'EAACZB8FGENw8BAPMGF4wvIHoftKXfETOpGzDb5WAdROLIVaw78u4HR16wn9aLXS66VA5DKA8wcJPaXBC77afgDd1PG5TC2TJoSRAamxju8S0KpnHJbNcCWx8D0FHT56JYs8o8T9i3ccfM5hhpcZBnSMyajOiHFCMZB7D5fwBwZDZD', //see README.md
+        callback: callbackFunction
+    };
+
+    const reactions = new mangoReactions(options);
+    const list = document.querySelectorAll('.reactions');
+    function callbackFunction(data) {
+      list.forEach((item) =>{
+        const reaction = item.dataset.reaction;
+        item.textContent = data[reaction.toUpperCase()];
+      });
+    }
+</script>
+</body>
+</html>
